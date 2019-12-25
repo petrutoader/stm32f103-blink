@@ -5,10 +5,10 @@ $ git submodule update --init # (Only needed once)
 $ pushd libopencm3 && make && popd
 $ make -C src
 ```
-# To run with GDB
+# To run with GDB (ARM GNU GDB)
 
 ```$ st-util
-$ gdb src/stm32f103-blink.elf
+$ arm-none-eabi-gdb src/stm32f103-blink.elf
 $ > target extended-remote :4242
 $ > load
 $ > run
