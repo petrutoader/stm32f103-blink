@@ -10,9 +10,9 @@
 
 1. st-util
 2. gdb src/stm32f103-blink.elf
-3. > target extended-remote :4242
-4. > load
-5. > run
+3. - target extended-remote :4242
+4. - load
+5. - run
 
 # To open the serial communication (using tio)
 
