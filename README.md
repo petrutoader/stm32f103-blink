@@ -34,3 +34,9 @@ $ > run
 # To open the serial communication (using tio)
 
 `$ tio --baudrate 115200 --databits 8 --flow none --stopbits 1 --parity none /dev/tty.usbmodemXXXXX`
+
+
+Sources:
+
+* [libopencm3-template](https://github.com/libopencm3/libopencm3-template)
+* [rhye.org - STM32 programming with libopencm3](https://www.rhye.org/post/stm32-with-opencm3-0-compiling-and-uploading/)
