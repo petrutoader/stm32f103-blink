@@ -23,7 +23,7 @@ $ pushd libopencm3 && make && popd
 
 `$ make -C src`
 
-# To run with GDB (ARM GNU GDB)
+## To run with GDB (ARM GNU GDB)
 
 ```$ st-util
 $ arm-none-eabi-gdb src/stm32f103-blink.elf
@@ -31,12 +31,12 @@ $ > target extended-remote :4242
 $ > load
 $ > run
 ```
-# To open the serial communication (using tio)
+## To open the serial communication (using tio)
 
 `$ tio --baudrate 115200 --databits 8 --flow none --stopbits 1 --parity none /dev/tty.usbmodemXXXXX`
 
 
-Sources:
+## Sources
 
 * [libopencm3-template](https://github.com/libopencm3/libopencm3-template)
 * [rhye.org - STM32 programming with libopencm3](https://www.rhye.org/post/stm32-with-opencm3-0-compiling-and-uploading/)
