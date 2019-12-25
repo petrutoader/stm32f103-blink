@@ -21,7 +21,9 @@ $ pushd libopencm3 && make && popd
 
 ## Compiling the software
 
-`$ make -C src`
+```
+$ make -C src
+```
 
 ## To run with GDB (ARM GNU GDB)
 
@@ -33,7 +35,9 @@ $ > run
 ```
 ## To open the serial communication (using tio)
 
-`$ tio --baudrate 115200 --databits 8 --flow none --stopbits 1 --parity none /dev/tty.usbmodemXXXXX`
+```
+$ tio --baudrate 115200 --databits 8 --flow none --stopbits 1 --parity none /dev/tty.usbmodemXXXXX
+```
 
 
 ## Sources
