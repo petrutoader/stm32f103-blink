@@ -2,7 +2,7 @@
 ```$ git clone https://github.com/libopencm3/libopencm3-template.git stm32f103-blink
 $ cd !$
 $ git submodule update --init # (Only needed once)
-$ pushd libopencm3 && make -C libopencm3 && popd
+$ pushd libopencm3 && make && popd
 $ make -C src
 ```
 # To run with GDB
