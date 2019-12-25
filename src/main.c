@@ -8,18 +8,17 @@
 #include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/systick.h>
 
+
 void sys_tick_handler(void);
 ssize_t _write(int file, const char *ptr, ssize_t len);
-
+static volatile uint32_t _millis = 0;
 uint32_t millis(void);
-
 static void usart_setup(void);
 static void clock_setup(void);
 void uart_puts(char *string);
 void uart_putln(char *string);
 void delay(uint32_t duration);
 
-static volatile uint32_t _millis = 0;
 
 int _write(int file, const char *ptr, ssize_t len) {
   if (file != STDOUT_FILENO && file != STDERR_FILENO) {
@@ -51,7 +50,6 @@ static void systick_setup(void) {
 }
 
 void sys_tick_handler(void) {
-  // Increment our monotonic clock
   _millis++;
 }
 
@@ -79,7 +77,6 @@ static void usart_setup(void) {
 
 static void clock_setup(void) {
   rcc_clock_setup_in_hsi_out_64mhz();
-
   rcc_periph_clock_enable(RCC_GPIOA);
   rcc_periph_clock_enable(RCC_USART2);
 }
@@ -112,6 +109,5 @@ int main(void) {
     gpio_clear(GPIOA, GPIO5);
     delay(1000);
   }
-
   return 0;
 }
