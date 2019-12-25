@@ -99,7 +99,6 @@ void uart_putln(char *string) {
 int main(void) {
   clock_setup();
   usart_setup();
-
   systick_setup();
 
   gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO5);
@@ -108,6 +107,7 @@ int main(void) {
 		printf("[%ld] LED on\n", millis());
     gpio_set(GPIOA, GPIO5);
     delay(1000);
+
 		printf("[%ld] LED off\n", millis());
     gpio_clear(GPIOA, GPIO5);
     delay(1000);
