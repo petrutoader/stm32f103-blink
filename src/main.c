@@ -26,7 +26,6 @@ int _write(int file, const char *ptr, ssize_t len) {
     errno = EIO;
     return -1;
   }
-
   int i;
   for (i = 0; i < len; i++) {
     if (ptr[i] == '\n') {
@@ -36,7 +35,6 @@ int _write(int file, const char *ptr, ssize_t len) {
   }
   return i;
 }
-
 
 static void systick_setup(void) {
   // Set the systick clock source to our main clock
