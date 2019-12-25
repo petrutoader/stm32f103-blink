@@ -1,6 +1,10 @@
-# Instructions
+# stm32f103-blink
+
+Inspired from Arduino's Blink, this time for a STM32F103 MCU!
 
 ## Installing ARM GNU Toolchain on Mac
+
+If you don't already have the ARM GNU Toolchain, then you can install it via `brew`.
 
 ```
 $ brew tap osx-cross/arm
