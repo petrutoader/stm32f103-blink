@@ -65,14 +65,14 @@ void delay(uint32_t duration) {
 static void usart_setup(void) {
   gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_ALTFN_PUSHPULL, GPIO_USART2_TX);
 
-	usart_set_baudrate(USART2, 115200);
-	usart_set_databits(USART2, 8);
-	usart_set_stopbits(USART2, USART_STOPBITS_1);
-	usart_set_mode(USART2, USART_MODE_TX);
-	usart_set_parity(USART2, USART_PARITY_NONE);
-	usart_set_flow_control(USART2, USART_FLOWCONTROL_NONE);
+  usart_set_baudrate(USART2, 115200);
+  usart_set_databits(USART2, 8);
+  usart_set_stopbits(USART2, USART_STOPBITS_1);
+  usart_set_mode(USART2, USART_MODE_TX);
+  usart_set_parity(USART2, USART_PARITY_NONE);
+  usart_set_flow_control(USART2, USART_FLOWCONTROL_NONE);
 
-	usart_enable(USART2);
+  usart_enable(USART2);
 }
 
 static void clock_setup(void) {
@@ -101,11 +101,11 @@ int main(void) {
   gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO5);
 
   while (true) {
-		printf("[%ld] LED on\n", millis());
+    printf("[%ld] LED on\n", millis());
     gpio_set(GPIOA, GPIO5);
     delay(1000);
 
-		printf("[%ld] LED off\n", millis());
+    printf("[%ld] LED off\n", millis());
     gpio_clear(GPIOA, GPIO5);
     delay(1000);
   }
