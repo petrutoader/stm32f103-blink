@@ -1,6 +1,6 @@
 # stm32f103-blink
 
-Inspired from Arduino's Blink, this time for a ARM Cortex-M3 MCU (STM32F103)!
+Inspired from Arduino's Blink, this time for an ARM Cortex-M3 MCU (STM32F103)!
 
 ## Installing ARM GNU Toolchain on Mac
 
