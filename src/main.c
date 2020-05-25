@@ -1,4 +1,3 @@
-#include <errno.h>
 #include <stdio.h>
 #include <inttypes.h>
 #include <unistd.h>
@@ -6,10 +5,18 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 #include <libopencm3/stm32/usart.h>
+#include <libopencm3/cm3/nvic.h>
+#include <stdio.h>
+#include <errno.h>
+
+
+#include <libopencm3/stm32/rcc.h>
+#include <libopencm3/stm32/gpio.h>
+#include <libopencm3/stm32/usart.h>
 #include <libopencm3/cm3/systick.h>
 
 
-void sys_tick_handler(void);
+// void sys_tick_handler(void);
 ssize_t _write(int file, const char *ptr, ssize_t len);
 static volatile uint32_t _millis = 0;
 uint32_t millis(void);
@@ -36,16 +43,10 @@ int _write(int file, const char *ptr, ssize_t len) {
 }
 
 static void systick_setup(void) {
-  // Set the systick clock source to our main clock
   systick_set_clocksource(STK_CSR_CLKSOURCE_AHB);
-  // Clear the Current Value Register so that we start at 0
   STK_CVR = 0;
-  // In order to trigger an interrupt every millisecond, we can set the reload
-  // value to be the speed of the processor / 1000 - 1
   systick_set_reload(rcc_ahb_frequency / 1000 - 1);
-  // Enable interrupts from the system tick clock
   systick_interrupt_enable();
-  // Enable the system tick counter
   systick_counter_enable();
 }
 
@@ -78,6 +79,7 @@ static void usart_setup(void) {
 static void clock_setup(void) {
   rcc_clock_setup_in_hsi_out_64mhz();
   rcc_periph_clock_enable(RCC_GPIOA);
+  rcc_periph_clock_enable(RCC_AFIO);
   rcc_periph_clock_enable(RCC_USART2);
 }
 
@@ -98,15 +100,15 @@ int main(void) {
   usart_setup();
   systick_setup();
 
-  gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO5);
+  gpio_set_mode(GPIOA, GPIO_MODE_OUTPUT_2_MHZ, GPIO_CNF_OUTPUT_PUSHPULL, GPIO10);
 
   while (true) {
     printf("[%ld] LED on\n", millis());
-    gpio_set(GPIOA, GPIO5);
+    gpio_set(GPIOA, GPIO10);
     delay(1000);
 
     printf("[%ld] LED off\n", millis());
-    gpio_clear(GPIOA, GPIO5);
+    gpio_clear(GPIOA, GPIO10);
     delay(1000);
   }
   return 0;
