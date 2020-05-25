@@ -2,12 +2,11 @@ PROJECT = stm32f1-blink
 BUILD_DIR = bin
 
 SHARED_DIR = ../lib
-CFILES = ./main.c
-
-# LDSCRIPT = ./stm32f1.ld
+CFILES = main.c
 
 # TODO - you will need to edit these two lines!
 DEVICE=stm32f103rbt6
+OOCD_FILE = board/stm32f1discovery.cfg
 
 # You shouldn't have to edit anything below here.
 VPATH += $(SHARED_DIR)
