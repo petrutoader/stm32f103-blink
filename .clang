@@ -1,0 +1,9 @@
+-I libopencm3/include
+-Wall
+-Wextra 
+-Wundef 
+-Wshadow 
+-fno-common 
+-fdata-sections 
+-MD 
+-DSTM32F1
