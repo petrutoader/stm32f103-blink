@@ -27,12 +27,27 @@ $ make -C src
 
 ## To run with GDB (ARM GNU GDB)
 
+### For st-util:
+
 ```$ st-util
 $ arm-none-eabi-gdb src/stm32f103-blink.elf
 $ > target extended-remote :4242
 $ > load
 $ > run
 ```
+
+### For Black Magic Probe
+
+```
+$ arm-none-eabi-gdb src/stm32f103-blink.elf
+$ > target extended-remote /dev/tty.usbmodemXXXXX
+$ > monitor tpwr enable !if not powered by another source
+$ > monitor swdp_scan
+$ > attach X
+$ > load
+$ > run
+```
+
 ## To open the serial communication (using tio)
 
 ```
